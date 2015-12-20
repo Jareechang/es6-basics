@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src/index.js -d lib"
+    "babel": "babel --presets es2015 src/ --out-dir lib/"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.0.0",
+    "babel-core": "^6.3.21",
     "babel-preset-es2015": "^6.3.13"
   }
 }
