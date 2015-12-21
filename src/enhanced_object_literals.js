@@ -17,9 +17,9 @@ var parentObj = {
 
 var obj = {
     // __proto__
-    // __proto__: parentObj,
+    __proto__: parentObj,
     // Does not set internal prototype
-    '__proto__': somethingElse,
+    // '__proto__': somethingElse,
     // Shorthand for ‘handler: handler’
     handler,
     // Methods
@@ -31,4 +31,10 @@ var obj = {
     [ "prop_" + (() => 42)() ]: 42
 };
 
+
+console.log(obj.sayHello());
+console.log(obj.handler);
+console.log(obj.toString());
+console.log(obj.prop_42);
+// console.log(obj.sayYelp());
 
