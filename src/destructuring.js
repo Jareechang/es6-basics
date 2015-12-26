@@ -47,8 +47,3 @@ function getFullName({ firstName: fname, lastName: lname }) {
 console.log(
     getFullName({firstName: person.firstName, lastName: person.lastName })
 );
-
-
-
-
-
