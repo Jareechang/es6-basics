@@ -19,11 +19,10 @@ console.log(addition(2));
  */ 
 
 function append(...args) {                
-    return (args).length;
+    return args.length;
 }
 
-var wArray = append("hello", "world");
-console.log(wArray);
+console.log(append("hello","world"));
 // console.log(typeof wArray);
 
 
@@ -32,7 +31,7 @@ console.log(wArray);
 */
 
 function sum(x,y,z) {
-    return x + y +z;
+    return x + y + z;
 }
 
 var numbers = [1,5,3,7];
