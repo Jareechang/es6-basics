@@ -8,15 +8,30 @@ These are key Points that I summarized for **myself** from the blog.
 
 Some definitions: 
 
-**Data consumers** - language constructs that consume data
+**Data Consumers** - Language constructs that consume data
 
 1. `for-of` loops over values 
 2. `(...)` spread operators inserts values into arrays 
+
+**Date Source** - The data consumers can get their values from variety of data source.
+
+1. Iterating over elements of an array
+2. The key-value entries in a map 
+3. Or characters of a string 
 
 **Source** - A value is considered iterable if it has a method whos key `Symbol.iterator` that return 
 a so called _iterator_. The **Iterator** is an object that returns values via its method `next()`
 
 **Consumption** - Data consumers use the iterators to retreive the values they are consuming 
+
+what consumption looks like for an array `arr`.
+
+First, create an iterator via the method whos key is **Symbol.iterator**. 
+
+```
+ > let arr = ['a', 'b', 'c'];
+ > let iter = arr[Symbol.iterator]();
+```
 
 #### Iterators are Iterable
 
