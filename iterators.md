@@ -59,9 +59,19 @@ Plain Objects are **NOT* iterable (ex. `{}`).
 
 #### Iterating language constructs
 
-1. Destructuring via an array pattern works for any iterable
-2.     
+All built-in ES6 programming construct that makes use of iteration protocol.
 
+1. **Destructuring** via an array pattern works for any iterable
+2. **The For-of loop**
+3. **Array.From()**
+4. **Spread** (...arr)
+5. **Maps and Sets**
+6. **Generators** 
+7. **Promises** - Promise.all() and Promise.race() accept iterables over promises
+8. ** Yield* **
+
+
+#### Iterating language constructs
 
 
 
