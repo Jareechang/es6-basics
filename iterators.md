@@ -65,13 +65,34 @@ All built-in ES6 programming construct that makes use of iteration protocol.
 2. **The For-of loop**
 3. **Array.From()**
 4. **Spread** (...arr)
+    - Inserts values of an iterable into an array
 5. **Maps and Sets**
 6. **Generators** 
 7. **Promises** - Promise.all() and Promise.race() accept iterables over promises
 8. ** Yield* **
 
 
-#### Iterating language constructs
+#### Optional iterator methods: **return() and throw()** 
+
+1. **return()** - gives an iterator the opportunity to clean up if an iteration ends prematurely 
+2.  **throw()** - forwarding method call to a generator that is iterated over via `yield*`
+
+
+##### Return 
+
+Within an iterator object example of the return: 
+
+```js
+...
+    return() {
+                // Action clean up iteration 
+                file.close();
+                // Must return an object to indicate completion 
+                return { done: true };
+              },
+....
+
+```
 
 
 
