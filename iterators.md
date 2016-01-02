@@ -33,6 +33,8 @@ First, create an iterator via the method whos key is **Symbol.iterator**.
  > let iter = arr[Symbol.iterator]();
 ```
 
+Call **iterators**'s `next()` method repeatedly to retreive the item "inside" the array: 
+
 ```js 
 > iter.next()
 { value: 'a', done: false }
@@ -44,7 +46,26 @@ First, create an iterator via the method whos key is **Symbol.iterator**.
 { value: undefined, done: true }
 ```
 
-#### Iterators are Iterable
+The boolean, `done` indicates when the end of sequence has been reached. 
+
+#### Iteratable data sources
+
+1. Array are iterable over their elements 
+2. Strings are iterable over Unicode code points 
+3. Maps are iterable over their entries. Each entry is encoded in as a [key, value] pair
+4. Sets are iterable over their elements (which is the same order they were added to the set)
+
+Plain Objects are **NOT* iterable (ex. `{}`).
+
+#### Iterating language constructs
+
+1. Destructuring via an array pattern works for any iterable
+2.     
+
+
+
+
+
 
 
 
