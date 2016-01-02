@@ -69,7 +69,7 @@ All built-in ES6 programming construct that makes use of iteration protocol.
 5. **Maps and Sets**
 6. **Generators** 
 7. **Promises** - Promise.all() and Promise.race() accept iterables over promises
-8. ** Yield* **
+8. **Yield***
 
 
 #### Optional iterator methods: **return() and throw()** 
