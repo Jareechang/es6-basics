@@ -5,7 +5,6 @@ These are key Points that I summarized for **myself** from the blog.
 
 #### Iterability 
 
-
 Some definitions: 
 
 **Data Consumers** - Language constructs that consume data
@@ -94,6 +93,45 @@ Within an iterator object example of the return:
 
 ```
 
+#### Implementing iterables
+
+An object becomes an iteratable ("implements" the interface iterable) if it has a method
+(own or inherited) whose key is **Symbol.iterator**. 
+
+That method must return an _iterator_, an object that _enumerates_ the items "inside" the iterable 
+via its method `next()` 
+
+Examining the structure:
+
+```js 
+// Interface iterable 
+let iterable {
+    // Method key is Symbol.iterator
+    [Symbol.iterator](){
+        let step = 0;
+        // Iterator 
+        let iterator = {
+            // Iterator's next method
+            next() {
+
+                if(step <= 2) {
+                    step ++; 
+                }
+
+                switch(step) {
+                    case 1:
+                        return { value: 'hello', done: false };
+                    case 2:
+                        return { value: 'world', done: false };
+                    default:
+                        return { value: undefined, done: true };
+                }
+            }   
+        };
+        return iterator;
+    }
+};
+```
 
 
 
