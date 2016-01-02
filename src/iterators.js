@@ -48,11 +48,69 @@
 //     console.log(`${key}: ${value}`);
 // }        
     
-    /* Iterators are also iterable
+    /* Implementing iterables
+
+        IterateOver() fuction with args
+    –––––––––––––––––––––––––––*/
+    function iterateOver(...args) {
+        let index = 0;
+        let iterable = {
+            [Symbol.iterator](){
+                let iterator = {
+                    next(){
+                        // Logic check 
+                        if(index < args.length) {
+                            return { value: args[index++] };
+                        }else {
+                            return { done: true };
+                        }
+                    }
+                }
+                return iterator;
+            }
+        };
+        return iterable; 
+    }
+
+    // for (let x of iterateOver('fee', 'fi', 'fo', 'fum')) {
+    //        console.log(x);
+    // }
+
+    /* Iterators are also iterable  
+
+    Simplifying the function above 
+
+        IterateOver() fuction with args
     –––––––––––––––––––––––––––*/
 
-    /* Iterators are also iterable
-    –––––––––––––––––––––––––––*/
+    function simplifiedIterateOver(...args) {
+        let index = 0;
+        let iterable = {
+            [Symbol.iterator](){  
+                /* This in this case is referred 
+                    to the iterable object 
+                                        
+                    ** called with a context object owning the call (implicit binding)
+    
+                */                            
+                return this;
+            },
+            next(){
+                if (index < args.length) {
+                    return { value: args[index++] };
+                } else {
+                    return { done: true };
+                }
+            }
+        }
+        return iterable;
+    }
+
+    for (let x of simplifiedIterateOver('fee', 'fi', 'fo', 'fum')) {
+           console.log(x);
+    }
+
+       
 
 
     /* Cominbator for iterables 
