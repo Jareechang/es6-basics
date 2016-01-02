@@ -91,7 +91,6 @@
                     to the iterable object 
                                         
                     ** called with a context object owning the call (implicit binding)
-    
                 */                            
                 return this;
             },
@@ -121,10 +120,30 @@
         Let’s start with the combinator function take(n, iterable), which returns an iterable
      over the first n items of iterable.*/ 
 
+     // Iterable interface
     function take(n,iterable) {
+        /* convert the iterable object into an iterator */
         let iter = iterable[Symbol.iterator]();
         return  {
-
+            [Symbol.iterator](){
+                return this
+            },
+            next(){
+                /* Implement the logic to keep track if the number to be taken
+                    has been reached */
+                if(n > 0) {
+                    n--;
+                    // Return the value of the next within the iterator if limit hasn't been reached
+                    return iter.next();
+                }else {
+                    return { done: true };
+                }
+            }                
         }
     }
 
+    let arr = ["a", "b", "c", "d"];
+
+    for(let x of take(3, arr)){
+        console.log(x);
+    }
