@@ -6,6 +6,46 @@ My review notes from 2ality blog about es6 [generators](http://www.2ality.com/20
 
 generators are functions that can be paused and resumed. 
 
+Example of generator: 
+
+```js 
+
+    function* getFunc() {
+        console.log(1);  // A
+        yield
+        console.log(2);  // B
+    }
+```
+
+A generator starts with a keyword `function*` and it is paused in the middle via `yield`
+
+Calling the _getFunc_ does not excute the generator. Rather, it returns a **generator object** that lets 
+you control _getFunc_'s execution: 
+
+```js 
+    > let genObj = getFunc();
+```
+
+`getFunc()` is initially suspended at the beginning of the body. The method `genObj.next()` continues the execution getFunc, until next yield: 
+
+```js 
+    > let genObj.next();
+    > 1
+    { value: undefined, done: false }
+```
+
+`genFunc` is now paused at **point A** It returns an object, then called again, it would result in:
+
+
+```js 
+    > let genObj.next();
+    > 2
+    { value: undefined, done: done }
+```
+
+Now, the generator is finished, further calleds on `genObj.next()` will have no effect.
+
+
 Two important applications of generators are:
 
 • Implementing iterables 
