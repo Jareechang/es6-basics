@@ -10,24 +10,7 @@ Two important applications of generators are:
 
 • Implementing iterables 
 • Blocking Asynchronous function calls
+    - The execution would wait until results is ready, meaning that the code would look synchronous while performing asynchronous operations
 
-##### Implementing iterables via generators 
 
 
-```js 
-    // Asterisk indicates the function is a generator
-    function * objectEntries(obj) {
-        let propKeys = Reflect.ownKeys(obj);
-
-        for (let propKey of propKeys) {
-            /*
-                Yield returns a value then pauses the generator.
-                When called again, execution continues where it 
-                was previously paused
-            */
-            yield [propKey, obj[propKey]];
-        }
-
-    }
-
-```
