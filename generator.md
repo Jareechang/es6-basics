@@ -92,3 +92,34 @@ four ways of creating generators:
     let myInst = new myClass();
     let genObj = myInst.generatorMethod();
 ```
+##### Ways of Iterating through generators
+
+example generator: 
+```js 
+    function* genFunc() {
+         yield 'a';
+         yield 'b';
+     }
+```
+
+1. _for-of loop_ 
+```js
+    for(let x of getFunc() ){
+        console.log(x);
+    } 
+    // Output: 
+    // a 
+    // b
+```
+2. spread operator (...)
+```js 
+    let arr = [...getFunc()]; // ['a', 'b']
+```
+3. destructuring 
+```js  
+    let [x,y] = getFunc();
+    > x 
+    'a'
+    > y 
+    'b'
+```
