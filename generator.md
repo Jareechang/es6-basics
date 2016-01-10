@@ -123,3 +123,105 @@ example generator:
     > y 
     'b'
 ```
+
+##### Return from generators
+
+```js
+
+    function * genFuncWithReturn() {
+        yield 'a'; 
+        yield 'b';
+        return 'result';
+    }
+```
+
+The **return object** shows up as the last object returned by the _next()_. Whose property of done is _true_. 
+
+```js 
+
+    let genWithReturn = getFuncWithReturn(); 
+    
+    > genWithReturn.next();
+      { value: 'a', done: false }
+
+    > genWithReturn.next();
+      { value: 'b', done: false }
+
+    > genWithReturn.next();
+      { value: 'result', done: true }
+```
+**note:** most constructs that work with iterables ignore the value inside the done object. example, _for-of_ loop.
+
+**yield * **, for making recursive generator calls consider values inside the done object.
+
+##### Yield * 
+
+_yield *_ allows you to call another generator functions from within generators (as if it was a function call).
+
+```js 
+
+    function* foo() {
+        yield 'a';
+        yield 'b';
+    }
+```
+
+**Normal function call:**
+
+Calling foo returns an object, but doesn't execute _foo()_. So, in this case, we would need the _yield*_ recursive 
+generator calls.
+
+```js 
+    function * bar() {
+        yield 'x'
+        foo(); // does nothing 
+        yield 'y'
+    }
+```
+
+** yield * recursive call: ** 
+
+```js  
+    function * bar() {
+        yield 'x';
+        yield * foo(); 
+        yield 'y';
+    }
+
+    // Collect all values yielded by bar() in an array
+    let arr = [...bar()];
+
+    > arr
+    //  [ 'x', 'a', 'b', 'y']
+```
+
+** Internals of yield *: ** 
+
+behind the scenes, it uses a for-of loop to yield the _generators_ values. 
+
+```js      
+    function * bar() {
+        yield 'x';
+        yield * foo(); 
+        for(let value of foo() ) {
+            yield value;
+        }
+        yield 'y';
+    }
+```
+
+**Additioanlly, yield * works on any iterable object: ** 
+
+```js 
+    function * blah() {
+        yield 'out';
+        yield * ['of', 'sequence'];
+        yield 'here';
+    }
+
+    let arr = [...blah()];
+    > arr
+
+    // ['out', 'of', 'sequence', 'here']
+     
+```
