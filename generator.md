@@ -103,23 +103,23 @@ example generator:
 ```
 
 1. _for-of loop_ 
-```js
-    for(let x of getFunc() ){
-        console.log(x);
-    } 
-    // Output: 
-    // a 
-    // b
-```
+        ```js
+            for(let x of getFunc() ){
+                console.log(x);
+            } 
+            // Output: 
+            // a 
+            // b
+        ```
 2. spread operator (...)
-```js 
-    let arr = [...getFunc()]; // ['a', 'b']
-```
+        ```js 
+            let arr = [...getFunc()]; // ['a', 'b']
+        ```
 3. destructuring 
-```js  
-    let [x,y] = getFunc();
-    > x 
-    'a'
-    > y 
-    'b'
-```
+        ```js  
+            let [x,y] = getFunc();
+            > x 
+            'a'
+            > y 
+            'b'
+        ```
