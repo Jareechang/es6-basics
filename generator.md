@@ -225,3 +225,30 @@ behind the scenes, it uses a for-of loop to yield the _generators_ values.
     // ['out', 'of', 'sequence', 'here']
      
 ```
+
+** yield * consider end-of iteration values: ** 
+
+Generators provide the value via return. The result of _yield *_ is the end-of-iteration value: 
+
+```js 
+
+    function * getFuncWithReturn() {
+        yield 'a'; 
+        yield 'b'; 
+        return 'result';
+    }
+
+    function * logReturned(getObj) {
+        let result = yield * getObj;
+        console.log(result); // (A)        
+    }
+
+```
+
+If we want to get to line (A), we first must iterate over all values yielded by logReturned():
+
+```js 
+    > [...logReturned(genFuncWithReturn())]
+     The result
+     [ 'a', 'b' ]
+```
